@@ -61,8 +61,9 @@ var vm = new Vue({
 			item.editing = false;
 			item.newTitle = '';
 		},
-		addItem () {
+		addItem (ev) {
 			if (this.addTitle === '') {
+				ev.target.blur();
 				return;
 			}
 			this.list.push({
@@ -72,13 +73,13 @@ var vm = new Vue({
 				newTitle: ''
 			})
 			this.addTitle = '';
+			ev.target.blur();
 		},
 		cancelAddItem () {
 			this.addTitle = '';
 			this.$refs.addItemInput.blur();
 		},
 		watchList() {
-			console.log('watch：');
 			if (this.has === 'all') {
 				this.currentList = this.list.slice(0);
 			} else if (this.has === 'unfinished') {
@@ -101,7 +102,6 @@ var vm = new Vue({
 			deep: true
 		},
 		has() {
-			console.log('haschange')
 			this.watchList();
 		}
 	}
@@ -109,10 +109,8 @@ var vm = new Vue({
 
 function getHash() {
 	vm.has = window.location.hash.slice(1);
-	console.log(vm)
 }
 getHash();
 window.addEventListener("hashchange",() => {
-	console.log('haschange1');
 	getHash()
 });

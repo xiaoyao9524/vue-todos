@@ -19,7 +19,7 @@
     <div class="main">
         <h3 class="big-title">添加任务：</h3>
         <!--事件对象-->
-        <input placeholder="你想做什么？" class="task-input" type="text" v-model="addTitle" ref="addItemInput" @keyup.enter="addItem" @keyup.esc="cancelAddItem"/>
+        <input placeholder="你想做什么？" class="task-input" type="text" v-model="addTitle" ref="addItemInput" @keyup.enter="addItem($event)" @keyup.esc="cancelAddItem"/>
 
         <ul class="task-count">
             <li>{{ unfinished }}个任务未完成</li>
