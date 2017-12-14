@@ -45,9 +45,9 @@
                     <div class="view">
                         <input v-model="item.isCheck" class="toggle" type="checkbox">
                         <label>{{item.title}}</label>
-                        <button @dblclick.stop @click="deleteItem(index)" class="destroy"></button>
+                        <button @dblclick.stop @click="deleteItem(item)" class="destroy"></button>
                     </div>
-                    <input type="text" class="edit" v-model="item.newTitle" @blur="cancelEditing(item)">
+                    <input type="text" class="edit" v-model="item.newTitle" @blur="cancelEditing(item.id)">
                 </li>
             </ul>
         </div>

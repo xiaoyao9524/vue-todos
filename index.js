@@ -36,8 +36,19 @@ var vm = new Vue({
 		}
 	},
 	methods: {
-		deleteItem (index) {
+		deleteItem (item) {
+			// console.log(id);
+			var index = this.list.findIndex(function (a) {
+				return item === a;
+			})
 			this.list.splice(index, 1);
+			// console.log(index);
+			// this.list.forEach(function (item, index, arr) {
+			// 	console.log(item.id === id)
+			// 	if (item.id === id) {
+			// 		arr.splice(index, 1);
+			// 	}
+			// })
 		},
 		editing (index) {
 			this.list[index].editing = true;
@@ -70,7 +81,8 @@ var vm = new Vue({
 				title: this.addTitle,
 				isCheck: false,
 				editing: false,
-				newTitle: ''
+				newTitle: '',
+				id: Math.random()
 			})
 			this.addTitle = '';
 			ev.target.blur();
